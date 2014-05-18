@@ -1,7 +1,7 @@
 #ifndef PERSONE_H
 #define PERSONE_H
 
-#include <string>;
+#include <string>
 
 struct DateOfBirth
 {
@@ -31,9 +31,9 @@ private:
     DateOfBirth mDateOfBirth;
     std::string mJob;
     std::string mBiorgaphy;
-    Persone* mMather;
+    Persone* mMother;
     Persone* mFather;
-
+    bool mIsConnected;
 };
 
 #endif // PERSONE_H
