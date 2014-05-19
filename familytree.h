@@ -2,7 +2,10 @@
 #define FAMILYTREE_H
 
 #include <QWidget>
-#include <persone.h>
+
+#include "persone.h"
+#include "newpersone.h"
+
 
 namespace Ui {
 class FamilyTree;
@@ -18,9 +21,13 @@ public:
     void showTree();
     void addNewPersone();
 
+private slots:
+    void on_btShowFamilyTree_clicked();
+
 private:
     Ui::FamilyTree *ui;
     std::vector<Persone*> mAllFamily;
+    NewPersone* mWiget;
 };
 
 #endif // FAMILYTREE_H
