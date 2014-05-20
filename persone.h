@@ -17,6 +17,13 @@ struct DateOfBirth
     int mYear;
 };
 
+struct Name
+{
+    std::string mFirstName;
+    std::string mMiddleName;
+    std::string mLastName;
+};
+
 class Persone
 {
 public:
@@ -28,6 +35,7 @@ public:
     void setBiography(std::string& aBiography);
 
 private:
+    Name mName;
     DateOfBirth mDateOfBirth;
     std::string mJob;
     std::string mBiorgaphy;
