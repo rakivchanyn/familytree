@@ -1,10 +1,10 @@
-#include "familytree.h"
+#include "familytreew.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    FamilyTree w;
+    FamilyTreeW w;
     w.show();
 
     return a.exec();

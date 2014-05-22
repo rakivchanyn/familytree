@@ -1,20 +1,16 @@
 #include "familytree.h"
-#include "ui_familytree.h"
 
-FamilyTree::FamilyTree(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::FamilyTree)
+FamilyTree* FamilyTree::mFamilyTree = NULL;
+FamilyTree* FamilyTree::getInstance()
 {
-    ui->setupUi(this);
-    mWiget = new NewPersone();
+    if (mFamilyTree == NULL)
+    {
+        mFamilyTree = new FamilyTree();
+    }
+    return mFamilyTree;
 }
 
-FamilyTree::~FamilyTree()
+void FamilyTree::addNewPersone(Persone *aPersone)
 {
-    delete ui;
-}
-
-void FamilyTree::on_btShowFamilyTree_clicked()
-{
-    mWiget->show();
+    mAllFamily.push_back(aPersone);
 }

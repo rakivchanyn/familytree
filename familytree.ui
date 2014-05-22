@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FamilyTree</class>
- <widget class="QWidget" name="FamilyTree">
+ <class>FamilyTreeW</class>
+ <widget class="QWidget" name="FamilyTreeW">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>FamilyTree</string>
+   <string>Family Tree</string>
+  </property>
+  <property name="locale">
+   <locale language="Ukrainian" country="Ukraine"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>

@@ -13,13 +13,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        familytree.cpp \
     persone.cpp \
-    newpersone.cpp
+    newpersone.cpp \
+    familytree.cpp \
+    familytreew.cpp
 
-HEADERS  += familytree.h \
+HEADERS  += \
     persone.h \
-    newpersone.h
+    newpersone.h \
+    familytree.h \
+    familytreew.h
 
 FORMS    += familytree.ui \
     newpersone.ui

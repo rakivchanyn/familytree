@@ -2,6 +2,7 @@
 #define PERSONE_H
 
 #include <string>
+#include <QString>
 
 struct DateOfBirth
 {
@@ -29,18 +30,19 @@ class Persone
 public:
     Persone();
     ~Persone();
-
+    void setName(std::string aFirstName, std::string aMiddleName, std::string aLastName);
     void setDateOfBirst(int aDay, int aMonth, int aYear);
-    void setJob(std::string& aJob);
-    void setBiography(std::string& aBiography);
+    void setJob(std::string aJob);
+    void setBiography(std::string aBiography);
+    QString toString();
 
 private:
     Name mName;
     DateOfBirth mDateOfBirth;
     std::string mJob;
-    std::string mBiorgaphy;
-    Persone* mMother;
+    std::string mBiography;
     Persone* mFather;
+    Persone* mMother;
     bool mIsConnected;
 };
 
