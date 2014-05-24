@@ -1,4 +1,5 @@
-#include "familytreew.h"
+#include "familytree.h"
+#include "mainwidget.h"
 #include "ui_familytree.h"
 
 FamilyTreeW::FamilyTreeW(QWidget *parent) :
@@ -21,5 +22,5 @@ void FamilyTreeW::on_btAddNewPersone_clicked()
 
 void FamilyTreeW::on_btShowFamilyTree_clicked()
 {
-
+    FamilyTree::getInstance()->saveTree();
 }

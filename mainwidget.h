@@ -1,10 +1,9 @@
-#ifndef FAMILYTREE_H
-#define FAMILYTREE_H
+#ifndef MAINWIDGET_H
+#define MAINWIDGET_H
 
 #include <QWidget>
 
 #include "newpersone.h"
-
 
 namespace Ui {
 class FamilyTreeW;

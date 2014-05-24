@@ -10,11 +10,13 @@ private:
     FamilyTree()
     {
     }
+
 public:
     ~FamilyTree();
     static FamilyTree* getInstance();
-
+    void saveTree();
     void addNewPersone(Persone* aPersone);
+
 private:
     static FamilyTree* mFamilyTree;
     std::vector<Persone*> mAllFamily;

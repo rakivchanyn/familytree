@@ -2,7 +2,7 @@
 #define NEWPERSONE_H
 
 #include <QWidget>
-#include "familytree.h"
+
 
 namespace Ui {
 class NewPersone;
@@ -18,6 +18,8 @@ public:
 
 private slots:
     void on_pbSubmit_clicked();
+
+    void on_pbCancel_clicked();
 
 private:
     Ui::NewPersone *ui;

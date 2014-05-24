@@ -1,4 +1,6 @@
 #include <QMessageBox>
+
+#include "familytree.h"
 #include "newpersone.h"
 #include "ui_newpersone.h"
 
@@ -23,5 +25,11 @@ void NewPersone::on_pbSubmit_clicked()
     p->setJob(ui->teJob->toPlainText().toStdString());
     p->setBiography(ui->teBiography->toPlainText().toStdString());
     FamilyTree::getInstance()->addNewPersone(p);
+    this->close();
 //    QMessageBox::information(this, "any", p->toString());
+}
+
+void NewPersone::on_pbCancel_clicked()
+{
+    this->close();
 }
