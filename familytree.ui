@@ -27,6 +27,13 @@
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="pbSaveTree">
+       <property name="text">
+        <string>Save Tree</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="btShowFamilyTree">
        <property name="text">
         <string>Show Family Tree</string>

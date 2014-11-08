@@ -22,5 +22,10 @@ void FamilyTreeW::on_btAddNewPersone_clicked()
 
 void FamilyTreeW::on_btShowFamilyTree_clicked()
 {
+    return;
+}
+
+void FamilyTreeW::on_pbSaveTree_clicked()
+{
     FamilyTree::getInstance()->saveTree();
 }

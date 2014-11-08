@@ -22,6 +22,8 @@ private slots:void on_btShowFamilyTree_clicked();
 
     void on_btAddNewPersone_clicked();
 
+    void on_pbSaveTree_clicked();
+
 private:
     Ui::FamilyTreeW *ui;
     NewPersone* mWidget;

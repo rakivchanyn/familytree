@@ -8,21 +8,21 @@ struct DateOfBirth
 {
     DateOfBirth()
     {
-        mDay = 0;
-        mMonth = 0;
-        mYear = 0;
+        day = 0;
+        month = 0;
+        year = 0;
     }
 
-    int mDay;
-    int mMonth;
-    int mYear;
+    int day;
+    int month;
+    int year;
 };
 
 struct Name
 {
-    std::string mFirstName;
-    std::string mMiddleName;
-    std::string mLastName;
+    QString mFirstName;
+    QString mMiddleName;
+    QString mLastName;
 };
 
 class Persone
@@ -30,20 +30,40 @@ class Persone
 public:
     Persone();
     ~Persone();
-    void setName(std::string aFirstName, std::string aMiddleName, std::string aLastName);
-    void setDateOfBirst(int aDay, int aMonth, int aYear);
-    void setJob(std::string aJob);
-    void setBiography(std::string aBiography);
+
     QString toString();
+
+    unsigned int getID() const;
+
+    const Name& getName() const;
+    void setName(QString aFirstName, QString aMiddleName, QString aLastName);  const Name& getName();
+
+    const DateOfBirth& getDateOfBirth() const;
+    void setDateOfBirth(const DateOfBirth& aDateOfBirth);
+    void setDateOfBirth(int aDay, int aMonth, int aYear);
+
+    const QString& getJob() const;
+    void setJob(const QString& aJob);
+
+    const QString& getBiography() const;
+    void setBiography(const QString &value);
+
+    const Persone* getFather() const;
+    void setFather(Persone* aPersone);
+
+    const Persone *getMother() const;
+    void setMother(Persone *aPersone);
 
 private:
     Name mName;
     DateOfBirth mDateOfBirth;
-    std::string mJob;
-    std::string mBiography;
+    QString mJob;
+    QString mBiography;
     Persone* mFather;
     Persone* mMother;
     bool mIsConnected;
+    unsigned int mID;
+    static unsigned int ID;
 };
 
 #endif // PERSONE_H
