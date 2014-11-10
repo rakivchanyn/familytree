@@ -1,7 +1,7 @@
 #ifndef MAINWIDGET_H
 #define MAINWIDGET_H
 
-#include <QWidget>
+#include <QMainWindow>
 
 #include "newpersone.h"
 
@@ -27,6 +27,7 @@ private slots:void on_btShowFamilyTree_clicked();
 private:
     Ui::FamilyTreeW *ui;
     NewPersone* mWidget;
+    QMenuBar* mMenuBar;
 };
 
 #endif // FAMILYTREE_H

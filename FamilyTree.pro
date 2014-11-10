@@ -16,13 +16,16 @@ SOURCES += main.cpp\
     persone.cpp \
     newpersone.cpp \
     familytree.cpp \
-    mainwidget.cpp
+    mainwidget.cpp \
+    mainwindow.cpp
 
 HEADERS  += \
     persone.h \
     newpersone.h \
     familytree.h \
-    mainwidget.h
+    mainwidget.h \
+    mainwindow.h
 
 FORMS    += familytree.ui \
-    newpersone.ui
+    newpersone.ui \
+    mainwindow.ui
