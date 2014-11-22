@@ -27,8 +27,7 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpen_Family_Tree"/>
-    <addaction name="actionExit"/>
+    <addaction name="actionOpen_FamilyTree"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -41,6 +40,11 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionOpen_FamilyTree">
+   <property name="text">
+    <string>Open Family Tree</string>
    </property>
   </action>
  </widget>

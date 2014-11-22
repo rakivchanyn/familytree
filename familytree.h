@@ -15,6 +15,7 @@ public:
     ~FamilyTree();
     static FamilyTree* getInstance();
     void saveTree();
+    void openTree(std::string& aFileName);
     void addNewPersone(Persone* aPersone);
 
 private:

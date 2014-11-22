@@ -1,7 +1,11 @@
+#include <sstream>
+#include <fstream>
 #include <QFile>
 #include <QTextStream>
+#include <QMessageBox>
 
 #include "familytree.h"
+#include "rapidxml_1_13/rapidxml.hpp"
 
 FamilyTree* FamilyTree::mFamilyTree = NULL;
 
@@ -46,6 +50,52 @@ void FamilyTree::saveTree()
         //out << persone->toString() << "\n\n";
     }
     file.close();
+}
+
+void FamilyTree::openTree(std::string& aFileName)
+{
+    std::ifstream inf;
+    inf.open(aFileName.c_str());
+    if (!inf.is_open())
+    {
+        //QMessageBox::information(this, "Info", "No such file to read");
+        return;
+    }
+    std::stringstream buffer;
+    buffer << inf.rdbuf();
+    inf.close();
+    std::string content = std::string(buffer.str());
+    rapidxml::xml_document<> doc;
+    doc.parse<0>(&content[0]);
+
+    xml_node<>* pRoot = doc.first_node();
+//    xml_node<>* pNode1 = pRoot->first_node();
+//    for(xml_node<>* pNode = pNode1->first_node(); pNode; pNode=pNode->next_sibling())
+//    {
+//        mHeaderNames.push_back(pNode->name());
+//    }
+//    std::vector<std::string> cd;
+//    cd.reserve(mHeaderNames.size());
+//    xml_node<>* pRoot = mDoc.first_node();
+//    xml_node<>* tempNode = NULL;
+//    for(xml_node<>* pNode= pRoot->first_node(mCDTagName.c_str()); pNode; pNode=pNode->next_sibling())
+//    {
+//        for(auto it : mHeaderNames)
+//        {
+//            tempNode = pNode->first_node(it.c_str());
+//            if (tempNode != NULL)
+//            {
+//                cd.push_back(tempNode->value());
+//            }
+//        }
+//        std::lock_guard<std::mutex> lk(mMutex);
+//        mCDInfo.push(cd);
+//        cd.clear();
+//        mCond.notify_one();
+//    }
+//    std::lock_guard<std::mutex> lk(mMutex);
+//    mIsFileEnded = true;
+//    mCond.notify_one();
 }
 
 void FamilyTree::addNewPersone(Persone *aPersone)
