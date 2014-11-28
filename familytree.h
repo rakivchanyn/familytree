@@ -7,19 +7,19 @@
 class FamilyTree
 {
 private:
-    FamilyTree()
-    {
-    }
+	FamilyTree()
+	{
+	}
 
 public:
-    ~FamilyTree();
-    static FamilyTree* getInstance();
-    void saveTree();
-    void openTree(std::string& aFileName);
-    void addNewPersone(Persone* aPersone);
+	~FamilyTree();
+	static FamilyTree* getInstance();
+	void saveTree();
+	void openTree(std::string& aFileName);
+	void addNewPersone(Persone* aPersone);
 
 private:
-    static FamilyTree* mFamilyTree;
-    std::vector<Persone*> mAllFamily;
+	static FamilyTree* mFamilyTree;
+	std::vector<Persone*> mAllFamily;
 };
 #endif // FAMILYTREE_H

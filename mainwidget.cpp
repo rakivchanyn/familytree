@@ -3,29 +3,29 @@
 #include "ui_familytree.h"
 
 FamilyTreeW::FamilyTreeW(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::FamilyTreeW)
+	QWidget(parent),
+	ui(new Ui::FamilyTreeW)
 {
-    ui->setupUi(this);
-    mWidget = new NewPersone();
+	ui->setupUi(this);
+	mWidget = new NewPersone();
 }
 
 FamilyTreeW::~FamilyTreeW()
 {
-    delete ui;
+	delete ui;
 }
 
 void FamilyTreeW::on_btAddNewPersone_clicked()
 {
-    mWidget->show();
+	mWidget->show();
 }
 
 void FamilyTreeW::on_btShowFamilyTree_clicked()
 {
-    return;
+	return;
 }
 
 void FamilyTreeW::on_pbSaveTree_clicked()
 {
-    FamilyTree::getInstance()->saveTree();
+	FamilyTree::getInstance()->saveTree();
 }

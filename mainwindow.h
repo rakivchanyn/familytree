@@ -4,6 +4,8 @@
 #include "mainwidget.h"
 
 #include <QMainWindow>
+#include <QMenu>
+#include <QAction>
 
 namespace Ui {
 class MainWindow;
@@ -11,15 +13,26 @@ class MainWindow;
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+	explicit MainWindow(QWidget *parent = 0);
+	~MainWindow();
+
+private slots:
+	void open();
 
 private:
-    Ui::MainWindow *ui;
-    FamilyTreeW* mWidget;
+	void createActions();
+	void createMenus();
+
+private:
+	QMenu* mFileMenu;
+	QAction* mOpenAct;
+
+private:
+	Ui::MainWindow *ui;
+	FamilyTreeW* mWidget;
 };
 
 #endif // MAINWINDOW_H
