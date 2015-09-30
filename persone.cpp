@@ -43,6 +43,11 @@ unsigned int Persone::getID() const
 	return mID;
 }
 
+void Persone::setID(unsigned int aID)
+{
+	mID = aID;
+}
+
 const Name& Persone::getName() const
 {
 	return mName;

@@ -34,6 +34,7 @@ public:
 	QString toString();
 
 	unsigned int getID() const;
+	void setID(unsigned int aID);
 
 	const Name& getName() const;
 	void setName(QString aFirstName, QString aMiddleName, QString aLastName);  const Name& getName();

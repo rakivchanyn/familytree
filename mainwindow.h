@@ -32,7 +32,7 @@ private:
 
 private:
 	Ui::MainWindow *ui;
-	FamilyTreeW* mWidget;
+	FamilyTreeW* mFamilyTreeWidget;
 };
 
 #endif // MAINWINDOW_H

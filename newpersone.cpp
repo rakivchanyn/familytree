@@ -1,8 +1,8 @@
-#include <QMessageBox>
-
 #include "familytree.h"
 #include "newpersone.h"
 #include "ui_newpersone.h"
+
+#include <QMessageBox>
 
 NewPersone::NewPersone(QWidget *parent) :
 	QWidget(parent),

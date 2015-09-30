@@ -1,8 +1,9 @@
 #ifndef FAMILYTREE_H
 #define FAMILYTREE_H
 
-#include <vector>
 #include "persone.h"
+
+#include <vector>
 
 class FamilyTree
 {

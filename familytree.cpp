@@ -1,13 +1,13 @@
+
+#include "familytree.h"
+#include "rapidxml_1_13/rapidxml.hpp"
+
 #include <sstream>
 #include <iostream>
 #include <fstream>
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
-
-#include "familytree.h"
-#include "rapidxml_1_13/rapidxml.hpp"
-
 FamilyTree* FamilyTree::mFamilyTree = NULL;
 
 FamilyTree* FamilyTree::getInstance()
@@ -78,11 +78,12 @@ void FamilyTree::openTree(std::string& aFileName)
 	{
 		//TODO: make loop for automaticaly getting nodes and assine to persone
 		tempNode = pNode->next_sibling();
+		pers = new Persone();
 		if (tempNode != NULL)
 		{
-			pers->mID = tempNode->value();
+			pers->setID((unsigned int)(tempNode->value()));
 		}
-		mCDInfo.push(pers);
+		mAllFamily.push_back(pers);
 		pers = NULL;
 	}
 }

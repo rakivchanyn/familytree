@@ -9,10 +9,10 @@
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	ui(new Ui::MainWindow),
-	mWidget(new FamilyTreeW())
+	mFamilyTreeWidget(new FamilyTreeW())
 {
 	ui->setupUi(this);
-	setCentralWidget(mWidget);
+	setCentralWidget(mFamilyTreeWidget);
 	createActions();
 	createMenus();
 	setWindowTitle(tr("Family Tree"));
@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
 	delete ui;
-	delete mWidget;
+	delete mFamilyTreeWidget;
 }
 
 void MainWindow::createActions()

@@ -17,14 +17,16 @@ SOURCES += main.cpp\
     newpersone.cpp \
     familytree.cpp \
     mainwidget.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    TreeWidget.cpp
 
 HEADERS  += \
     persone.h \
     newpersone.h \
     familytree.h \
     mainwidget.h \
-    mainwindow.h
+    mainwindow.h \
+    TreeWidget.h
 
 FORMS    += familytree.ui \
     newpersone.ui \
