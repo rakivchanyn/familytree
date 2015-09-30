@@ -21,6 +21,8 @@ FamilyTree* FamilyTree::getInstance()
 
 void FamilyTree::saveTree()
 {
+	if (mAllFamily.empty())
+		return;
 	QFile file("tree.xml");
 	file.open(QIODevice::WriteOnly | QIODevice::Text);
 	QTextStream out(&file);
