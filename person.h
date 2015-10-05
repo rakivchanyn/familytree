@@ -3,6 +3,7 @@
 
 #include <string>
 #include <QString>
+#include <memory>
 
 struct DateOfBirth
 {
@@ -25,11 +26,14 @@ struct Name
 	QString mLastName;
 };
 
-class Persone
+class Person
 {
+
+	typedef std::shared_ptr<Person> PersonPtr;
+
 public:
-	Persone();
-	~Persone();
+	Person();
+	~Person(){}
 
 	QString toString();
 
@@ -49,21 +53,25 @@ public:
 	const QString& getBiography() const;
 	void setBiography(const QString &value);
 
-	const Persone* getFather() const;
-	void setFather(Persone* aPersone);
+	const PersonPtr getFather() const;
+	void setFather(PersonPtr aPersone);
 
-	const Persone *getMother() const;
-	void setMother(Persone *aPersone);
+	const PersonPtr getMother() const;
+	void setMother(PersonPtr aPersone);
+
+	bool getIsMale() const;
+	void setIsMale(bool value);
 
 private:
 	Name mName;
 	DateOfBirth mDateOfBirth;
 	QString mJob;
 	QString mBiography;
-	Persone* mFather;
-	Persone* mMother;
+	PersonPtr mFather;
+	PersonPtr mMother;
 	bool mIsConnected;
 	unsigned int mID;
+	bool mIsMale;
 
 private:
 	static unsigned int ID;

@@ -11,7 +11,6 @@ FamilyTreeW::FamilyTreeW(QWidget *parent) :
 	mTreeWidget(new TreeWidget())
 {
 	ui->setupUi(this);
-	mWidget = new NewPersone();
 	mGridLayOut = new QGridLayout();
 	QVBoxLayout* vlayout = new QVBoxLayout;
 	QHBoxLayout* hlayout = new QHBoxLayout;
@@ -34,14 +33,12 @@ FamilyTreeW::~FamilyTreeW()
 
 void FamilyTreeW::updateView()
 {
-	QPushButton* button = new QPushButton("this");
-	mGridLayOut->addWidget(button, 0, 1);
-	this->show();
 }
 
 void FamilyTreeW::on_btAddNewPersone_clicked()
 {
-	mWidget->show();
+	NewPersone* widget = new NewPersone(FamilyTree::getInstance()->getAllFamily());
+	widget->show();
 }
 
 void FamilyTreeW::on_btShowFamilyTree_clicked()

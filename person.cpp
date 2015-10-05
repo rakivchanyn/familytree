@@ -1,8 +1,10 @@
-#include "persone.h"
+#include "person.h"
 
-unsigned int Persone::ID = 0;
+typedef std::shared_ptr<Person> PersonPtr;
 
-Persone::Persone() :
+unsigned int Person::ID = 0;
+
+Person::Person() :
 	mName(),
 	mDateOfBirth(),
 	mJob(""),
@@ -10,11 +12,12 @@ Persone::Persone() :
 	mFather(NULL),
 	mMother(NULL),
 	mIsConnected(false),
-	mID(ID++)
+	mID(ID++),
+	mIsMale(true)
 {
 }
 
-QString Persone::toString()
+QString Person::toString()
 {
 	QString s("Ім'я: " + mName.mFirstName);
 	s += "\nПо-батькові: " + mName.mMiddleName;
@@ -26,86 +29,96 @@ QString Persone::toString()
 	return s;
 }
 
-const Name& Persone::getName()
+const Name& Person::getName()
 {
 	return mName;
 }
 
-void Persone::setName(QString aFirstName, QString aMiddleName, QString aLastName)
+void Person::setName(QString aFirstName, QString aMiddleName, QString aLastName)
 {
 	mName.mFirstName = aFirstName;
 	mName.mMiddleName = aMiddleName;
 	mName.mLastName = aLastName;
 }
 
-unsigned int Persone::getID() const
+unsigned int Person::getID() const
 {
 	return mID;
 }
 
-void Persone::setID(unsigned int aID)
+void Person::setID(unsigned int aID)
 {
 	mID = aID;
 }
 
-const Name& Persone::getName() const
+const Name& Person::getName() const
 {
 	return mName;
 }
 
-const DateOfBirth& Persone::getDateOfBirth() const
+const DateOfBirth& Person::getDateOfBirth() const
 {
 	return mDateOfBirth;
 }
 
-void Persone::setDateOfBirth(const DateOfBirth& aDateOfBirth)
+void Person::setDateOfBirth(const DateOfBirth& aDateOfBirth)
 {
 	mDateOfBirth = aDateOfBirth;
 }
 
-void Persone::setDateOfBirth(int aDay, int aMonth, int aYear)
+void Person::setDateOfBirth(int aDay, int aMonth, int aYear)
 {
 	mDateOfBirth.day = aDay;
 	mDateOfBirth.month = aMonth;
 	mDateOfBirth.year = aYear;
 }
 
-const QString& Persone::getJob() const
+const QString& Person::getJob() const
 {
 	return mJob;
 }
 
-void Persone::setJob(const QString& aJob)
+void Person::setJob(const QString& aJob)
 {
 	mJob = aJob;
 }
 
-const QString& Persone::getBiography() const
+const QString& Person::getBiography() const
 {
 	return mBiography;
 }
 
-void Persone::setBiography(const QString& aBiography)
+void Person::setBiography(const QString& aBiography)
 {
 	mBiography = aBiography;
 }
 
-const Persone* Persone::getFather() const
+const PersonPtr Person::getFather() const
 {
 	return mFather;
 }
 
-void Persone::setFather(Persone* aPersone)
+void Person::setFather(PersonPtr aPersone)
 {
 	mFather = aPersone;
 }
 
-const Persone* Persone::getMother() const
+const PersonPtr Person::getMother() const
 {
 	return mMother;
 }
 
-void Persone::setMother(Persone* aPersone)
+void Person::setMother(PersonPtr aPersone)
 {
 	mMother = aPersone;
 }
+bool Person::getIsMale() const
+{
+	return mIsMale;
+}
+
+void Person::setIsMale(bool value)
+{
+	mIsMale = value;
+}
+

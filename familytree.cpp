@@ -27,7 +27,7 @@ void FamilyTree::saveTree()
 	file.open(QIODevice::WriteOnly | QIODevice::Text);
 	QTextStream out(&file);
 
-	Persone* p = mAllFamily.front();
+	PersonPtr p = mAllFamily.front();
 	p->getName().mFirstName;
 	out << "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
 	out << "<FAMILY>\n";
@@ -74,13 +74,12 @@ void FamilyTree::openTree(std::string& aFileName)
 	doc.parse<0>(&content[0]);
 
 	rapidxml::xml_node<>* pRoot = doc.first_node();
-	Persone* pers;
 	rapidxml::xml_node<>* tempNode = NULL;
 	for(rapidxml::xml_node<>* pNode = pRoot->first_node("persone"); pNode; pNode = pNode->next_sibling())
 	{
 		//TODO: make loop for automaticaly getting nodes and assine to persone
 		tempNode = pNode->next_sibling();
-		pers = new Persone();
+		PersonPtr pers(new Person());
 		if (tempNode != NULL)
 		{
 			pers->setID((unsigned int)(tempNode->value()));
@@ -90,7 +89,22 @@ void FamilyTree::openTree(std::string& aFileName)
 	}
 }
 
-void FamilyTree::addNewPersone(Persone *aPersone)
+void FamilyTree::addNewPersone(PersonPtr aPersone)
 {
 	mAllFamily.push_back(aPersone);
+}
+
+std::vector<PersonPtr> &FamilyTree::getAllFamily()
+{
+	return mAllFamily;
+}
+
+PersonPtr FamilyTree::findPersonById(unsigned int iId)
+{
+	for (auto it : mAllFamily)
+	{
+		if (it->getID() == iId)
+			return it;
+	}
+	return nullptr;
 }

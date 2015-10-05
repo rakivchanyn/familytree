@@ -13,20 +13,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-    persone.cpp \
     newpersone.cpp \
     familytree.cpp \
     mainwidget.cpp \
     mainwindow.cpp \
-    TreeWidget.cpp
+    TreeWidget.cpp \
+    person.cpp
 
 HEADERS  += \
-    persone.h \
     newpersone.h \
     familytree.h \
     mainwidget.h \
     mainwindow.h \
-    TreeWidget.h
+    TreeWidget.h \
+    person.h
 
 FORMS    += familytree.ui \
     newpersone.ui \

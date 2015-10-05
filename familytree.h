@@ -1,9 +1,12 @@
 #ifndef FAMILYTREE_H
 #define FAMILYTREE_H
 
-#include "persone.h"
+#include "person.h"
 
 #include <vector>
+#include <memory>
+
+typedef std::shared_ptr<Person> PersonPtr;
 
 class FamilyTree
 {
@@ -17,10 +20,12 @@ public:
 	static FamilyTree* getInstance();
 	void saveTree();
 	void openTree(std::string& aFileName);
-	void addNewPersone(Persone* aPersone);
+	void addNewPersone(PersonPtr aPersone);
+	std::vector<PersonPtr>& getAllFamily();
+	PersonPtr findPersonById(unsigned int iId);
 
 private:
 	static FamilyTree* mFamilyTree;
-	std::vector<Persone*> mAllFamily;
+	std::vector<PersonPtr> mAllFamily;
 };
 #endif // FAMILYTREE_H

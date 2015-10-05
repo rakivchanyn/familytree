@@ -3,9 +3,12 @@
 
 #include "newpersone.h"
 #include "TreeWidget.h"
+#include "person.h"
 
 #include <QMainWindow>
 #include <QGridLayout>
+
+typedef std::shared_ptr<Person> PersonPtr;
 
 namespace Ui {
 class FamilyTreeW;
@@ -30,7 +33,6 @@ private slots:
 
 private:
 	Ui::FamilyTreeW *ui;
-	NewPersone* mWidget;
 	QMenuBar* mMenuBar;
 	QGridLayout* mGridLayOut;
 	TreeWidget* mTreeWidget;

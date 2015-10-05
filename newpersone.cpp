@@ -4,11 +4,18 @@
 
 #include <QMessageBox>
 
-NewPersone::NewPersone(QWidget *parent) :
+typedef std::shared_ptr<Person> PersonPtr;
+
+NewPersone::NewPersone(std::vector<PersonPtr> iAllFamily, QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::NewPersone)
 {
 	ui->setupUi(this);
+	for(auto it : iAllFamily)
+	{
+		QString name = it->getName().mFirstName + it->getName().mMiddleName + it->getName().mLastName;
+		ui->comboBox->addItem(name, QVariant(it->getID()));
+	}
 }
 
 NewPersone::~NewPersone()
@@ -17,7 +24,7 @@ NewPersone::~NewPersone()
 }
 void NewPersone::on_pbSubmit_clicked()
 {
-	Persone* p = new Persone();
+	PersonPtr p(new Person());
 	p->setName(ui->leFirstName->text(),
 			   ui->leMiddleName->text(),
 			   ui->leLastName->text());
@@ -25,6 +32,12 @@ void NewPersone::on_pbSubmit_clicked()
 	p->setJob(ui->teJob->toPlainText());
 	p->setBiography(ui->teBiography->toPlainText());
 	FamilyTree::getInstance()->addNewPersone(p);
+	int id = ui->comboBox->currentData().toInt();
+	PersonPtr person = FamilyTree::getInstance()->findPersonById(id);
+	p->setFather(person);
+	id = ui->comboBox_2->currentData().toInt();
+	person = FamilyTree::getInstance()->findPersonById(id);
+	p->setMother(person);
 	this->close();
 //	QMessageBox::information(this, "any", p->toString());
 }
