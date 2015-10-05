@@ -18,7 +18,7 @@ private:
 public:
 	~FamilyTree();
 	static FamilyTree* getInstance();
-	void saveTree();
+	void saveTree(const QString &iSaveFileName);
 	void openTree(std::string& aFileName);
 	void addNewPersone(PersonPtr aPersone);
 	std::vector<PersonPtr>& getAllFamily();

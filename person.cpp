@@ -2,7 +2,7 @@
 
 typedef std::shared_ptr<Person> PersonPtr;
 
-unsigned int Person::ID = 0;
+unsigned int Person::sID = 0;
 
 Person::Person() :
 	mName(),
@@ -12,7 +12,7 @@ Person::Person() :
 	mFather(NULL),
 	mMother(NULL),
 	mIsConnected(false),
-	mID(ID++),
+	mID(sID++),
 	mIsMale(true)
 {
 }
@@ -120,5 +120,15 @@ bool Person::getIsMale() const
 void Person::setIsMale(bool value)
 {
 	mIsMale = value;
+}
+
+void Person::setNextID(unsigned int iID)
+{
+	sID = iID;
+}
+
+unsigned int Person::getNextID()
+{
+	return sID;
 }
 

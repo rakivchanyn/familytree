@@ -62,6 +62,9 @@ public:
 	bool getIsMale() const;
 	void setIsMale(bool value);
 
+	static void setNextID(unsigned int iID);
+	static unsigned int getNextID();
+
 private:
 	Name mName;
 	DateOfBirth mDateOfBirth;
@@ -74,7 +77,7 @@ private:
 	bool mIsMale;
 
 private:
-	static unsigned int ID;
+	static unsigned int sID;
 };
 
 #endif // PERSONE_H

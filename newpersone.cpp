@@ -11,10 +11,15 @@ NewPersone::NewPersone(std::vector<PersonPtr> iAllFamily, QWidget *parent) :
 	ui(new Ui::NewPersone)
 {
 	ui->setupUi(this);
+	ui->comboBox_3->addItem("чоловік", QVariant(true));
+	ui->comboBox_3->addItem("жінка", QVariant(false));
 	for(auto it : iAllFamily)
 	{
-		QString name = it->getName().mFirstName + it->getName().mMiddleName + it->getName().mLastName;
-		ui->comboBox->addItem(name, QVariant(it->getID()));
+		QString name = it->getName().mMiddleName + " " + it->getName().mFirstName + " " + it->getName().mLastName;
+		if (it->getIsMale())
+			ui->comboBox->addItem(name, QVariant(it->getID()));
+		else
+			ui->comboBox_2->addItem(name, QVariant(it->getID()));
 	}
 }
 
@@ -38,6 +43,7 @@ void NewPersone::on_pbSubmit_clicked()
 	id = ui->comboBox_2->currentData().toInt();
 	person = FamilyTree::getInstance()->findPersonById(id);
 	p->setMother(person);
+	p->setIsMale(ui->comboBox_3->currentData().toBool());
 	this->close();
 //	QMessageBox::information(this, "any", p->toString());
 }

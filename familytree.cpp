@@ -19,34 +19,38 @@ FamilyTree* FamilyTree::getInstance()
 	return mFamilyTree;
 }
 
-void FamilyTree::saveTree()
+void FamilyTree::saveTree(QString const & iSaveFileName)
 {
 	if (mAllFamily.empty())
 		return;
-	QFile file("tree.xml");
+	QFile file(iSaveFileName);
 	file.open(QIODevice::WriteOnly | QIODevice::Text);
 	QTextStream out(&file);
+	out.setCodec("UTF-8");
 
 	PersonPtr p = mAllFamily.front();
 	p->getName().mFirstName;
 	out << "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n";
+	out << "<latestId>" << Person::getNextID() << "</latestId>\n";
 	out << "<FAMILY>\n";
-	for (auto persone : mAllFamily)
+	for (auto person : mAllFamily)
 	{
 		out << "<persone>\n";
-		out << "\t" << "<personeID>" << persone->getID() << "</personeID>" << "\n";
+		out << "\t" << "<personeID>" << person->getID() << "</personeID>\n";
 		out << "\t" << "<name>\n";
-		out << "\t\t" << "<firstname>" << persone->getName().mFirstName << "</firstname>" << "\n";
-		out << "\t\t" << "<middlename>" << persone->getName().mMiddleName << "</middlename>" << "\n";
-		out << "\t\t" << "<lastname>" << persone->getName().mLastName << "</lastname>" << "\n";
+		out << "\t\t" << "<firstname>" << person->getName().mFirstName << "</firstname>\n";
+		out << "\t\t" << "<middlename>" << person->getName().mMiddleName << "</middlename>\n";
+		out << "\t\t" << "<lastname>" << person->getName().mLastName << "</lastname>\n";
 		out << "\t" << "</name>\n";
 		out << "\t" << "<dateofbirth>\n";
-		out << "\t\t"<< "<day>" << QString::number(persone->getDateOfBirth().day) << "</day>" << "\n";
-		out << "\t\t"<< "<month>" << QString::number(persone->getDateOfBirth().month) << "</month>" << "\n";
-		out << "\t\t"<< "<year>" << QString::number(persone->getDateOfBirth().year) << "</year>" << "\n";
+		out << "\t\t"<< "<day>" << QString::number(person->getDateOfBirth().day) << "</day>\n";
+		out << "\t\t"<< "<month>" << QString::number(person->getDateOfBirth().month) << "</month>\n";
+		out << "\t\t"<< "<year>" << QString::number(person->getDateOfBirth().year) << "</year>\n";
 		out << "\t" << "</dateofbirth>\n";
-		out << "\t" << "<job>" << persone->getJob() << "</job>" << "\n";
-		out << "\t" << "<biography>" << persone->getBiography() << "</biography>" << "\n";
+		QString sex = person->getIsMale() ? "чоловік" : "жінка";
+		out << "\t" << "<sex>" << sex << "</sex>\n";
+		out << "\t" << "<job>" << person->getJob() << "</job>\n";
+		out << "\t" << "<biography>" << person->getBiography() << "</biography>\n";
 		out << "</persone>\n";
 
 
@@ -74,6 +78,7 @@ void FamilyTree::openTree(std::string& aFileName)
 	doc.parse<0>(&content[0]);
 
 	rapidxml::xml_node<>* pRoot = doc.first_node();
+//	pRoot->first_node("")
 	rapidxml::xml_node<>* tempNode = NULL;
 	for(rapidxml::xml_node<>* pNode = pRoot->first_node("persone"); pNode; pNode = pNode->next_sibling())
 	{

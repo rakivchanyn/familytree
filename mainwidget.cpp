@@ -4,6 +4,7 @@
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
+#include <QFileDialog>
 
 FamilyTreeW::FamilyTreeW(QWidget *parent) :
 	QWidget(parent),
@@ -48,5 +49,8 @@ void FamilyTreeW::on_btShowFamilyTree_clicked()
 
 void FamilyTreeW::on_pbSaveTree_clicked()
 {
-	FamilyTree::getInstance()->saveTree();
+	QString fileName = QFileDialog::getSaveFileName(this, tr("Save Family Tree"),
+							   "..\\FamilyTree.xml",
+							   tr("XML (*.xml)"));
+	FamilyTree::getInstance()->saveTree(fileName);
 }
